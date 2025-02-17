@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Farming Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Smart Farming Assistant</h1>
+    </div>
+
+    <div class="tab-container">
+        <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
+        <button class="tab-button" onclick="openTab(event, 'soil')">Soil Quality</button>
+        <button class="tab-button" onclick="openTab(event, 'practices')">Best Practices</button>
+        <button class="tab-button" onclick="openTab(event, 'about')">About</button>
+    </div>
+
+    <div id="home" class="tab-content active">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Welcome to Smart Farming</h1>
+                <p>Revolutionizing agriculture with technology and data-driven insights</p>
+                <button class="cta-button">Get Started</button>
+            </div>
+        </div>
+        
+        <div class="features-section">
+            <h2 class="section-title">Our Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-seedling"></i>
+                    <h2>Soil Analysis</h2>
+                    <p>Get detailed insights about your soil composition and health.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-leaf"></i>
+                    <h2>Crop Recommendations</h2>
+                    <p>Receive personalized crop suggestions based on your soil conditions.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-book"></i>
+                    <h2>Best Practices</h2>
+                    <p>Learn about sustainable farming methods and techniques.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-cloud-sun"></i>
+                    <h2>Weather Integration</h2>
+                    <p>Stay updated with weather forecasts for better planning.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="soil" class="tab-content">
+        <h2>Soil Quality Analysis</h2>
+        <p>Upload your soil test results or input parameters to get detailed analysis.</p>
+    </div>
+
+    <div id="practices" class="tab-content">
+        <h2>Best Farming Practices</h2>
+        <p>Learn about sustainable farming methods.</p>
+    </div>
+
+    <div id="about" class="tab-content">
+        <h2>About Us</h2>
+        <p>We are dedicated to helping farmers optimize their agricultural practices.</p>
+    </div>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="script.js"></script>
+</body>
+</html>
