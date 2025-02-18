@@ -9,15 +9,9 @@ body {
     line-height: 1.6;
 }
 
-.header {
-    background-color: #2e7d32;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-}
 
 .tab-container {
-    background-color: #4caf50;
+    background-color: #2e7d32;
     padding: 10px 0;
     text-align: center;
 }
