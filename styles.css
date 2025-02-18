@@ -191,7 +191,11 @@ body {
     margin-top: 10px;
 }
 
-.soil-text{
+.soil-text,.farming-prac{
+    margin-top: 20px;
+}
+
+.farming-text{
     margin-top: 20px;
 }
 
@@ -215,6 +219,63 @@ body {
     font-size: 1.1rem;
     cursor: pointer;
     margin-top: 10px;
+}
+
+.inputs {
+    display: flex; /* Aligns children horizontally */
+    justify-content: space-evenly; /* Distributes space between the input boxes */
+    align-items: center; /* Centers the items vertically */
+     /* Adds some space between the input-container elements */
+    padding: 20px;
+    position: relative;
+    top: 20px;
+}
+
+.input-container {
+    display: flex; /* Aligns the input and button horizontally within each container */
+    gap: 10px; /* Adds space between the input and the button */
+    width: 300px;
+    /* margin: 30px auto; */
+    text-align: center;
+}
+
+#loc{
+    position: relative;
+    left: 90px;
+}
+#cro{
+    position: relative;
+    right:90px;
+}
+
+.input-box {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+
+.input-box {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
 }
 
 

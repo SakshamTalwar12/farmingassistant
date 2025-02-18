@@ -13,7 +13,7 @@
 
     <div class="tab-container">
         <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
-        <button class="tab-button" onclick="openTab(event, 'soil')">Soil Quality</button>
+        <button class="tab-button" onclick="openTab(event, 'soil')">Soil Quality and Pest control</button>
         <button class="tab-button" onclick="openTab(event, 'practices')">Best Practices</button>
         <button class="tab-button" onclick="openTab(event, 'govtschemes')">Govt Schemes</button>        
         <button class="tab-button" onclick="openTab(event, 'about')">About</button>
@@ -88,10 +88,20 @@
     </div>
 
     <div id="practices" class="tab-content">
-        <h2>Best Farming Practices</h2>
-        <p>Learn about sustainable farming methods.</p>
-    </div>
-
+        <div class="farming-text">
+            <h2>Best Farming Practices</h2>
+            <p>Enter the following details about yourself to learn about best and most sustainable farming techniques.</p>
+        </div>
+        <div class="inputs">
+            <div class="input-container" id="loc">
+                <input type="text" class="input-box" id="userInput" placeholder="Enter your location here">
+                <button class="submit-btn" onclick="submitInput()">Submit</button>
+            </div>
+            <div class="input-container" id="cro">
+                <input type="text" class="input-box" id="userInput" placeholder="Enter name of crop">
+                <button class="submit-btn" onclick="submitInput()">Submit</button>
+            </div>
+        </div>
     <div id="about" class="tab-content">
         <h2>About Us</h2>
         <p>We are dedicated to helping farmers optimize their agricultural practices.</p>
