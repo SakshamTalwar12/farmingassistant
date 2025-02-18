@@ -15,7 +15,9 @@
         <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
         <button class="tab-button" onclick="openTab(event, 'soil')">Soil Quality</button>
         <button class="tab-button" onclick="openTab(event, 'practices')">Best Practices</button>
+        <button class="tab-button" onclick="openTab(event, 'govtschemes')">Govt Schemes</button>        
         <button class="tab-button" onclick="openTab(event, 'about')">About</button>
+
     </div>
 
     <div id="home" class="tab-content active">
@@ -55,8 +57,34 @@
     </div>
 
     <div id="soil" class="tab-content">
-        <h2>Soil Quality Analysis</h2>
-        <p>Upload your soil test results or input parameters to get detailed analysis.</p>
+      <section class="soilsol">
+        <div class="soil-text">
+            <h2>Soil Quality Analysis</h2>
+            <p>Upload an image of your soil to receive a quality assessment and practical testing recommendations.</p>
+        </div>
+        <div class="drop-container">
+            <div class="drop-area">
+                <p>Drag & Drop an image or <span class="browse">click to upload</span></p>
+                <input type="file" class="imageInput" accept="image/*" hidden>
+                <img class="preview" src="#" alt="Image Preview" style="display:none;">
+            </div>
+        </div>
+        <button class="uploadBtn">Upload</button> 
+      </section>
+      <section class="pestsol"> 
+        <div class="pest-text">      
+            <h2>Pest Control</h2>
+            <p>Upload an image of pests or plant damage to identify the issue and receive effective control solutions.</p>
+        </div>
+        <div class="drop-container">
+            <div class="drop-area">
+                <p>Drag & Drop an image or <span class="browse">click to upload</span></p>
+                <input type="file" class="imageInput" accept="image/*" hidden>
+                <img class="preview" src="#" alt="Image Preview" style="display:none;">
+            </div>
+        </div>
+        <button class="uploadBtn">Upload</button>  
+      </section>
     </div>
 
     <div id="practices" class="tab-content">
