@@ -102,7 +102,8 @@ body {
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     text-align: center;
 }
 
@@ -124,7 +125,7 @@ body {
 
 .feature-card:hover {
     transform: translateY(-10px);
-    transition: transform 0.5s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -286,4 +287,422 @@ body {
     .section-title {
         font-size: 2rem;
     }
+}
+
+/* Government Schemes Styles */
+.schemes-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 25px;
+}
+
+.schemes-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.schemes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.scheme-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    border-top: 5px solid #4caf50;
+}
+.scheme-card p{
+    color: #666;
+}
+
+.scheme-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.scheme-icon {
+    font-size: 2.5rem;
+    color: #4caf50;
+    margin-bottom: 20px;
+}
+
+.scheme-card h3 {
+    color: #2e7d32;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+#schemes h2{
+    color: #2e7d32;
+    font-size: 2.2rem;
+    margin-top: 5px;
+}
+
+.scheme-details {
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+    margin: 20px;
+    color: black;
+    margin-top: 40px;
+}
+
+.scheme-details span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* About Us Styles */
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+
+.about-hero {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.about-tagline {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+#about h2{
+    color: #2e7d32;
+    font-size: 2.2rem;
+    margin-top: 7px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.about-section {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    border-top: 5px solid #4caf50;
+}
+
+.about-section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+.about-section p{
+    color: #666;
+}
+
+.about-section i {
+    font-size: 2.5rem;
+    color: #4caf50;
+    margin-bottom: 20px;
+}
+
+.about-section h3 {
+    color: #2e7d32;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.about-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-section li {
+    margin: 10px 0;
+    color: #666;
+}
+
+.team-section {
+    text-align: center;
+    margin-top: 50px;
+}
+.team-section h3{
+    color: #2e7d32;
+    font-size: 22px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.team-member {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-bottom: 5px solid #4caf50;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.member-img {
+    font-size: 4rem;
+    color: #4caf50;
+    margin-bottom: 15px;
+}
+
+.team-member h4 {
+    color: #2e7d32;
+    margin-bottom: 5px;
+}
+
+.team-member p {
+    color: #666;
+}
+
+.schemes-contact,.practises-contact {
+    text-align: center;
+    margin-top: 50px;
+    padding: 30px;
+    background: #f5f5f5;
+    border-radius: 15px;
+}
+
+.contact-btn ,.schemes-btn,.farm-btn,.practises-btn{
+    padding: 15px 30px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover,.schemes-btn:hover ,.farm-btn:hover,.practises-btn:hover{
+    background-color: #3e8e41;
+    /* transform: translateY(-3px); */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.schemes-btn,.farm-btn,.pest-btn{
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.schemes-btn:hover ,.farm-btn:hover,.pest-btn:hover{
+    background-color: #3e8e41;
+    /* transform: translateY(-3px); */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.pest-btn{
+    margin-top: 60px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .schemes-grid,
+    .about-grid,
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .scheme-details {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Only Best Practices Tab Styling */
+#practices {
+    max-width: 1200px;
+    margin: 20px auto 20px;
+    padding: 30px;
+}
+
+#practices h2 ,#soil h2{
+    color: #2e7d32;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+}
+#soil h2{
+    margin-top: 50px;
+}
+.soil-text{
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.farming-text {
+    text-align: center;
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.practice-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.practice-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    border-top: 5px solid #4caf50;
+}
+
+.practice-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.practice-card i {
+    font-size: 2.5rem;
+    color: #4caf50;
+    margin-bottom: 20px;
+}
+
+
+
+.practice-card h3 {
+    color: #2e7d32;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.practice-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.pest-control {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 2px dashed #4caf50;
+}
+
+.pest-text {
+    text-align: center;
+    color: #555;
+    margin: 20px 0 30px;
+}
+
+.pest-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.pest-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom:5px solid #4caf50;
+}
+
+.pest-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    /* background: linear-gradient(to right, #4caf50, #2e7d32); */
+}
+
+.pest-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.pest-card i {
+    font-size: 2.5rem;
+    color: #4caf50;
+    margin: 15px 0;
+    transition: all 0.3s ease;
+}
+
+
+.pest-card h3 {
+    color: #2e7d32;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.pest-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #practices {
+        padding: 20px;
+        margin: 100px auto 20px;
+    }
+
+    .practice-cards, .pest-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .practice-card, .pest-card {
+        padding: 20px;
+    }
+
+    #practices h2 {
+        font-size: 1.8rem;
+    }
+}
+.soil-content{
+    max-width: 1200px;
+    margin: 20px auto 20px;
+    padding: 30px;
+
+}
+#soil h2{
+    margin-top: 0;
+}
+.farming-prac{
+    margin-top: 50px;
 }
