@@ -8,9 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-
-    </div>
-
     <div class="tab-container">
         <button class="tab-button active" onclick="openTab(event, 'home')">Home</button>
         <button class="tab-button" onclick="openTab(event, 'soil')">Soil Quality</button>
@@ -110,6 +107,17 @@
                 </div>
             </div>
             <button class="uploadBtn">Analyze Soil</button> -->
+            <div class="image-bor">
+            <h2 class="upload-heading">Soil Quality Check / Pest Check</h2>
+            <div class="image-upload-container" onclick="document.getElementById('imageUpload').click()">
+                <input type="file" id="imageUpload" accept="image/*">
+                <div class="upload-placeholder">Upload Image</div>
+                <img id="preview" alt="Uploaded Image Preview">
+            </div>
+            </div>
+            <button class="img-submit">Submit</button>
+            <br>
+
         </div>
     </div>
 
@@ -142,7 +150,48 @@
             <div class="practises-contact">
                 <h3>Need Help?</h3>
                 <p>Enter details about yourself to learn about best farming practises.</p>
-                <button class="practises-btn">Click Here</button>
+
+                <button class="practises-btn" id="openPracticesModalBtn">Click Here</button>
+<div id="practicesModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closePracticesModal">&times;</span>
+
+        <div class="form-group">
+            <label>What type of soil do you have?</label>
+            <input type="text" id="soilType" placeholder="E.g., Clay, Sandy, Loamy">
+        </div>
+
+        <div class="form-group">
+            <label>Do you have access to irrigation?</label>
+            <input type="text" id="irrigation" placeholder="Yes or No">
+        </div>
+
+        <div class="form-group">
+            <label>What are the main crops you cultivate?</label>
+            <input type="text" id="crops" placeholder="E.g., Wheat, Rice">
+        </div>
+
+        <div class="form-group">
+            <label>Do you face any major pest or disease issues?</label>
+            <input type="text" id="pestIssues" placeholder="Yes or No (Specify if needed)">
+        </div>
+
+        <div class="form-group">
+            <label>Do you use chemical fertilizers, organic manure, or both?</label>
+            <input type="text" id="fertilizers" placeholder="E.g., Chemical, Organic, Both">
+        </div>
+
+        <div class="form-group">
+            <label>Do you face extreme weather conditions like droughts or floods?</label>
+            <input type="text" id="weatherIssues" placeholder="Yes or No">
+        </div>
+
+        <button id="submitPracticesDetails">Submit</button>
+        <p id="responsePractices"></p>
+    </div>
+</div>
+
+                
             </div>
     </div>
     
@@ -197,7 +246,51 @@
             <div class="schemes-contact">
                 <h3>Need Help?</h3>
                 <p>Enter details about yourself to learn about government schemes that suit you.</p>
-                <button class="contact-btn">Click Here</button>
+                <button class="contact-btn" id="openSchemesModalBtn">Click Here</button>
+<div id="schemesModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeSchemesModal">&times;</span>
+
+        <div class="form-group">
+            <label>State:</label>
+            <input type="text" id="state" placeholder="Enter your state">
+        </div>
+
+        <div class="form-group">
+            <label>Land Area (in acres):</label>
+            <input type="number" id="landArea" placeholder="E.g., 5">
+        </div>
+
+        <div class="form-group">
+            <label>Main Crops:</label>
+            <input type="text" id="cropsSchemes" placeholder="E.g., Wheat, Rice">
+        </div>
+
+        <div class="form-group">
+            <label>Annual Income (₹):</label>
+            <input type="text" id="income" placeholder="E.g., Below 1 lakh">
+        </div>
+
+        <div class="form-group">
+            <label>Do you have a Kisan Credit Card? (Yes/No)</label>
+            <input type="text" id="kcc" placeholder="Yes or No">
+        </div>
+
+        <div class="form-group">
+            <label>Are you registered under PM-KISAN? (Yes/No)</label>
+            <input type="text" id="pmKisan" placeholder="Yes or No">
+        </div>
+
+        <div class="form-group">
+            <label>Any other details that you would like to mention</label>
+            <input type="text" id="otherDetails">
+        </div>
+
+        <button id="submitSchemesDetails">Submit</button>
+        <p id="responseSchemes"></p>
+    </div>
+</div>
+
             </div>
         </div>
     </div>
