@@ -9,7 +9,6 @@ body {
     line-height: 1.6;
 }
 
-
 .tab-container {
     background-color: #2e7d32;
     padding: 10px 0;
@@ -275,7 +274,7 @@ body {
 
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .hero-content h1 {
         font-size: 2.5rem;
     }
@@ -528,7 +527,7 @@ body {
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
+/* @media (max-width: 500px) {
     .schemes-grid,
     .about-grid,
     .team-grid {
@@ -539,7 +538,7 @@ body {
         flex-direction: column;
         gap: 10px;
     }
-}
+} */
 
 /* Only Best Practices Tab Styling */
 #practices {
@@ -676,9 +675,9 @@ body {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+/* @media (max-width: 500px) {
     #practices {
-        padding: 20px;
+        padding: 10px;
         margin: 100px auto 20px;
     }
 
@@ -693,7 +692,7 @@ body {
     #practices h2 {
         font-size: 1.8rem;
     }
-}
+} */
 .soil-content{
     max-width: 1200px;
     margin: 20px auto 20px;
@@ -710,11 +709,11 @@ body {
 
 .modal {
     display: none;
-    position: fixed;
-    top: 50%;
+    position: absolute;
+    top:90%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
+    background: lightgray;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
@@ -725,6 +724,8 @@ body {
   .modal-content {
     text-align: left;
     position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   
   .close {
