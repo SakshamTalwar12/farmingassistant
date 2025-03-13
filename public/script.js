@@ -29,25 +29,22 @@ window.onload = function () {
 };
 
 // Drag and Drop Image Upload for Multiple Drop Areas
-const dropAreas = document.querySelectorAll(".drop-area"); // Select all drop areas
+const dropAreas = document.querySelectorAll(".drop-area");
 
 // Loop through each drop area to add event listeners
 dropAreas.forEach((dropArea) => {
-    const imageInput = dropArea.querySelector(".imageInput"); // Image input specific to this drop area
-    const preview = dropArea.querySelector(".preview"); // Preview specific to this drop area
-    const browse = dropArea.querySelector(".browse"); // Browse span specific to this drop area
+    const imageInput = dropArea.querySelector(".imageInput");
+    const preview = dropArea.querySelector(".preview");
+    const browse = dropArea.querySelector(".browse");
 
-    // Handle File Selection from input
     if (imageInput) {
         imageInput.addEventListener("change", (event) => handleFiles(event, preview));
     }
 
-    // Handle Click on Browse Span
     if (browse) {
         browse.addEventListener("click", () => imageInput.click());
     }
 
-    // Handle Drag Events
     dropArea.addEventListener("dragover", (e) => {
         e.preventDefault();
         dropArea.style.backgroundColor = "#e0e0e0";
@@ -80,39 +77,18 @@ function handleFiles(event, preview) {
     }
 }
 
-
-// Handle Form Submission
-
-
-const imageUpload = document.getElementById("imageUpload");
-const preview = document.getElementById("preview");
-const placeholder = document.querySelector(".upload-placeholder");
-
-imageUpload.addEventListener("change", function (event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            preview.src = e.target.result;
-            preview.style.display = "block";
-            placeholder.style.display = "none"; // Hide text when image is uploaded
-        };
-        reader.readAsDataURL(file);
-    }
-});
-
-function submitImage() {
-    if (!imageUpload.files.length) {
-        alert("Please upload an image first.");
-        return;
-    }
-    alert("Image submitted successfully! (Backend processing needed)");
-}
-
 // Practices Modal
 document.getElementById("openPracticesModalBtn").addEventListener("click", function () {
     document.getElementById("practicesModal").style.display = "block";
+    // Reset the form and response when opening modal
+    document.getElementById("responsePractices").style.display = "none";
+    document.getElementById("responsePractices").innerText = "";
+    
+    // Make sure form is visible
+    const formElements = document.getElementById("practicesModal").querySelectorAll(".form-group, #submitPracticesDetails");
+    formElements.forEach(el => el.style.display = "block");
 });
+
 document.getElementById("closePracticesModal").addEventListener("click", function () {
     document.getElementById("practicesModal").style.display = "none";
 });
@@ -120,7 +96,14 @@ document.getElementById("closePracticesModal").addEventListener("click", functio
 // Schemes Modal
 document.getElementById("openSchemesModalBtn").addEventListener("click", function () {
     document.getElementById("schemesModal").style.display = "block";
+    // Reset the form and response when opening modal
+    document.getElementById("responseSchemes").style.display = "none";
+    document.getElementById("responseSchemes").innerText = "";
+    
+    // Make sure form is visible
+    document.getElementById("schemesForm").style.display = "block";
 });
+
 document.getElementById("closeSchemesModal").addEventListener("click", function () {
     document.getElementById("schemesModal").style.display = "none";
 });
@@ -134,58 +117,121 @@ window.addEventListener("click", function (event) {
     }
 });
 
-// Form Submission Handling
-document.getElementById("submitPracticesDetails").addEventListener("click", function () {
-    const soilType = document.getElementById("soilType").value;
-    const irrigation = document.getElementById("irrigation").value;
-    const crops = document.getElementById("crops").value;
-    const pestIssues = document.getElementById("pestIssues").value;
-    const fertilizers = document.getElementById("fertilizers").value;
-    const weatherIssues = document.getElementById("weatherIssues").value;
+// Submit Practices Form & Fetch AI Response
+document.getElementById("submitPracticesDetails").addEventListener("click", async function () {
+    const soilType = document.getElementById("soilType").value.trim();
+    const irrigation = document.getElementById("irrigation").value.trim();
+    const crops = document.getElementById("crops").value.trim();
+    const pestIssues = document.getElementById("pestIssues").value.trim();
+    const fertilizers = document.getElementById("fertilizers").value.trim();
+    const weatherIssues = document.getElementById("weatherIssues").value.trim();
 
-    const farmerData = {
-        soilType,
-        irrigation,
-        crops,
-        pestIssues,
-        fertilizers,
-        weatherIssues,
-    };
+    if (!soilType || !irrigation || !crops) {
+        alert("Please fill all required details.");
+        return;
+    }
 
-    console.log("Practices Data:", farmerData);
+    const userPrompt = `Soil Type: ${soilType}, Irrigation: ${irrigation}, Crops: ${crops}, Pest Issues: ${pestIssues}, Fertilizers: ${fertilizers}, Weather Issues: ${weatherIssues}. Suggest best farming practices for this farmer.`;
 
-    document.getElementById("responsePractices").innerText =
-        "Best practices details submitted successfully!";
+    try {
+        // Show loading message in the response element
+        document.getElementById("responsePractices").innerText = "Generating response...";
+        document.getElementById("responsePractices").style.display = "block";
+        
+        // Hide all form elements
+        const formElements = document.getElementById("practicesModal").querySelectorAll(".form-group, #submitPracticesDetails");
+        formElements.forEach(el => el.style.display = "none");
+
+        const response = await fetch("/generate-response", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt: userPrompt }),
+        });
+
+        const data = await response.json();
+
+        if (data.response) {
+            document.getElementById("responsePractices").innerText = data.response;
+        } else {
+            document.getElementById("responsePractices").innerText = "No response received.";
+        }
+    } catch (error) {
+        console.error("Error fetching AI response:", error);
+        document.getElementById("responsePractices").innerText = "Error fetching data.";
+    }
 });
 
-document.getElementById("submitSchemesDetails").addEventListener("click", function () {
-    const state = document.getElementById("state").value;
-    const landArea = document.getElementById("landArea").value;
-    const crops = document.getElementById("cropsSchemes").value;
-    const income = document.getElementById("income").value;
-    const kcc = document.getElementById("kcc").value;
-    const pmKisan = document.getElementById("pmKisan").value;
-    const otherDetails = document.getElementById("otherDetails").value;
+// Submit Schemes Form & Fetch AI Response
+document.getElementById("submitSchemesDetails").addEventListener("click", async function () {
+    const state = document.getElementById("state").value.trim();
+    const landArea = document.getElementById("landArea").value.trim();
+    const crops = document.getElementById("cropsSchemes").value.trim();
+    const income = document.getElementById("income").value.trim();
+    const kcc = document.getElementById("kcc").value.trim();
+    const pmKisan = document.getElementById("pmKisan").value.trim();
+    const otherDetails = document.getElementById("otherDetails").value.trim();
 
     if (!state || !landArea || !crops || !income) {
         alert("Please fill all required details.");
         return;
     }
 
-    console.log("Schemes Data:", {
-        State: state,
-        "Land Area": landArea,
-        Crops: crops,
-        "Annual Income": income,
-        "Kisan Credit Card": kcc,
-        "PM-KISAN Registered": pmKisan,
-        "Other Details": otherDetails,
-    });
+    const userPrompt = `State: ${state}, Land Area: ${landArea} acres, Crops: ${crops}, Annual Income: ${income}, KCC: ${kcc}, PM-KISAN: ${pmKisan}, Other Details: ${otherDetails}. Suggest government schemes suitable for this farmer.`;
 
-    document.getElementById("responseSchemes").innerText =
-        "Government schemes details submitted successfully!";
+    try {
+        // Show loading message in the response element
+        document.getElementById("responseSchemes").innerText = "Generating response...";
+        document.getElementById("responseSchemes").style.display = "block";
+        
+        // Hide the form completely
+        document.getElementById("schemesForm").style.display = "none";
+
+        const response = await fetch("/generate-response", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt: userPrompt }),
+        });
+
+        const data = await response.json();
+
+        if (data.response) {
+            document.getElementById("responseSchemes").innerText = data.response;
+            document.getElementById("responseSchemes").style.display = "block";
+        } else {
+            document.getElementById("responseSchemes").innerText = "No response received.";
+        }
+    } catch (error) {
+        console.error("Error fetching AI response:", error);
+        document.getElementById("responseSchemes").innerText = "Error fetching data.";
+    }
 });
 
+// Image Upload Preview (for Soil Quality Check)
+document.getElementById("imageUpload").addEventListener("change", function(event) {
+    const preview = document.getElementById("preview");
+    const file = event.target.files[0];
+    
+    if (file && file.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = "block";
+            document.querySelector(".upload-placeholder").style.display = "none";
+        };
+        reader.readAsDataURL(file);
+    }
+});
 
-
-
+// Submit Image Analysis
+document.querySelector(".img-submit").addEventListener("click", async function() {
+    const preview = document.getElementById("preview");
+    
+    if (!preview.src || preview.src === "") {
+        alert("Please upload an image first.");
+        return;
+    }
+    
+    // Here you would send the image to your server for Gemini analysis
+    // This is a placeholder for that functionality
+    alert("Image analysis functionality to be implemented");
+});
