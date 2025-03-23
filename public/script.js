@@ -235,3 +235,103 @@ document.querySelector(".img-submit").addEventListener("click", async function()
     // This is a placeholder for that functionality
     alert("Image analysis functionality to be implemented");
 });
+
+
+//  const imageUpload = document.getElementById('imageUpload');
+const preview = document.getElementById('preview');
+const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+const submitButton = document.getElementById('submitButton');
+const loading = document.getElementById('loading');
+const resultsContainer = document.getElementById('resultsContainer');
+const closeResults = document.getElementById('closeResults');
+
+// Handle image upload
+imageUpload.addEventListener('change', function() {
+    if (this.files && this.files[0]) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+            uploadPlaceholder.style.display = 'none';
+            submitButton.disabled = false;
+            
+            // Hide results if previously shown
+            resultsContainer.style.display = 'none';
+        };
+        
+        reader.readAsDataURL(this.files[0]);
+    }
+});
+
+// Handle close button click for results
+closeResults.addEventListener('click', function() {
+    resultsContainer.style.display = 'none';
+});
+
+// Handle submit button click
+submitButton.addEventListener('click', async function() {
+    if (!imageUpload.files || !imageUpload.files[0]) {
+        return;
+    }
+    
+    // Show loading indicator and disable submit button
+    submitButton.disabled = true;
+    loading.style.display = 'flex'; // Changed to flex for centering
+    
+    try {
+        // Create form data for the API request
+        const formData = new FormData();
+        formData.append('image', imageUpload.files[0]);
+        
+        // Send the image to the server
+        const response = await fetch('/analyze-soil', {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to analyze image');
+        }
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            // Display the results as an overlay
+            const resultContent = document.createElement('div');
+            resultContent.innerHTML = `<h3>Analysis Results</h3><p>${data.analysis.replace(/\n/g, '<br>')}</p>`;
+            
+            // Clear previous results and add new ones
+            resultsContainer.innerHTML = '';
+            resultsContainer.appendChild(closeResults);
+            resultsContainer.appendChild(resultContent);
+            
+            // Show the results container
+            resultsContainer.style.display = 'block';
+        } else {
+            const errorContent = document.createElement('div');
+            errorContent.innerHTML = `<h3>Error</h3><p>${data.error}</p>`;
+            
+            resultsContainer.innerHTML = '';
+            resultsContainer.appendChild(closeResults);
+            resultsContainer.appendChild(errorContent);
+            
+            resultsContainer.style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        
+        const errorContent = document.createElement('div');
+        errorContent.innerHTML = `<h3>Error</h3><p>Error analyzing image: ${error.message}</p>`;
+        
+        resultsContainer.innerHTML = '';
+        resultsContainer.appendChild(closeResults);
+        resultsContainer.appendChild(errorContent);
+        
+        resultsContainer.style.display = 'block';
+    } finally {
+        // Hide loading indicator and re-enable submit button
+        loading.style.display = 'none';
+        submitButton.disabled = false;
+    }
+});
