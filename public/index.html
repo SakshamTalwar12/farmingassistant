@@ -78,7 +78,9 @@
                     </div>
                 </div>
             </div>
+            <a href="https://onlinelibrary.wiley.com/doi/10.1155/2023/6699154" target="_blank">
             <button class="farm-btn">Learn More</button>
+            </a>
             <div class="pest-control">
                 <h2>Pest Management</h2>
                 <p class="pest-text">Integrated Pest Management (IPM) strategies for your crops:</p>
@@ -100,7 +102,9 @@
                     </div>
                 </div>
             </div>
+            <a href="https://bioprotectionportal.com/resources/integrated-pest-management-use-and-its-benefits/?utm_source=google&utm_medium=cpc&gad_source=1&gclid=Cj0KCQjwkN--BhDkARIsAD_mnIqVIpJ-DJV2wnw0tAr4s3yGgRF4aaf3qfwXud2aiGX70V3y5EnWxXgaAsUvEALw_wcB" target="_blank">
             <button class="pest-btn">Learn More</button>
+            </a>
             <!-- <div class="drop-container">
                 <div class="drop-area">
                     <p>Drag & drop soil test results or <span class="browse">browse</span></p>
@@ -109,15 +113,19 @@
             </div>
             <button class="uploadBtn">Analyze Soil</button> -->
             <div class="image-bor">
-            <h2 class="upload-heading">Soil Quality Check / Pest Check</h2>
-            <div class="image-upload-container" onclick="document.getElementById('imageUpload').click()">
-                <input type="file" id="imageUpload" accept="image/*">
-                <div class="upload-placeholder">Upload Image</div>
-                <img id="preview" alt="Uploaded Image Preview">
+                <h2 class="upload-heading">Soil Quality Check / Pest Check</h2>
+                <div class="image-upload-container" onclick="document.getElementById('imageUpload').click()">
+                    <input type="file" id="imageUpload" accept="image/*">
+                    <div class="upload-placeholder" id="uploadPlaceholder">Upload Image</div>
+                    <img id="preview" alt="Uploaded Image Preview">
+                </div>
+                <div class="loading" id="loading">Analyzing your image</div>
+                <div class="results-container" id="resultsContainer">
+                    <button class="close-results" id="closeResults">×</button>
+                    <!-- Results will be shown here -->
+                </div>
             </div>
-            </div>
-            <button class="img-submit">Submit</button>
-            <br>
+            <button class="img-submit" id="submitButton" disabled>Submit</button>
 
         </div>
     </div>
@@ -146,7 +154,9 @@
                 </div>
             </div>
         </div>
+        <a href="https://www.agrivi.com/blog/best-farm-practices-for-profitable-farming/" target="_blank">
         <button class="farm-btn">Learn More</button>
+        </a>
         
             <div class="practises-contact">
                 <h3>Need Help?</h3>
@@ -243,10 +253,11 @@
                     <!-- <a href="#" class="scheme-btn">Learn More</a> -->
                 </div>
             </div>
-            <button class="schemes-btn">Learn More</button>
+            <a href="https://pib.gov.in/PressReleaseIframePage.aspx?PRID=2002012" target="_blank">
+            <button class="schemes-btn">Learn More</button></a>
             <div class="schemes-contact">
                 <h3>Need Help?</h3>
-                <p>Enter details about yourself to learn about government schemes that suit you.</p>
+                <p>Enter details to learn about relevant government schemes.</p>
                 <button class="contact-btn" id="openSchemesModalBtn">Click Here</button>
                 <div id="schemesModal" class="modal">
                     <div class="modal-content">
